@@ -1,0 +1,202 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "FIFA World Cup AI Stadium Companion API",
+    "description": "API documentation for the AI Stadium Companion. All successful responses return { success, data, message, requestId, timestamp }.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "/api",
+      "description": "Base API Path"
+    }
+  ],
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health Check",
+        "description": "Returns the health status of the API.",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
+    },
+    "/ai/chat": {
+      "post": {
+        "summary": "AI Chat Assistant",
+        "description": "Conversational AI that answers stadium-related questions.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": { "type": "string" },
+                  "language": { "type": "string", "default": "English" },
+                  "userRole": { "type": "string", "default": "Fan" },
+                  "stadium": { "type": "string" },
+                  "match": { "type": "string" },
+                  "accessibility": { "type": "boolean" }
+                },
+                "required": ["message"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "AI reply" },
+          "400": { "description": "Validation error" },
+          "429": { "description": "Rate limit exceeded" },
+          "500": { "description": "Internal server error" }
+        }
+      }
+    },
+    "/navigation/route": {
+      "post": {
+        "summary": "Smart Stadium Navigation",
+        "description": "Intelligent routing inside the stadium.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "currentLocation": { "type": "string" },
+                  "destination": { "type": "string" },
+                  "stadium": { "type": "string" },
+                  "userRole": { "type": "string", "default": "Fan" },
+                  "wheelchair": { "type": "boolean", "default": false },
+                  "avoidCrowd": { "type": "boolean", "default": false },
+                  "language": { "type": "string", "default": "English" }
+                },
+                "required": ["currentLocation", "destination", "stadium"]
+              }
+            }
+          }
+        },
+        "responses": { "200": { "description": "Route data" } }
+      }
+    },
+    "/accessibility/assist": {
+      "post": {
+        "summary": "Accessibility Intelligence",
+        "description": "Personalized accessibility guidance.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "stadium": { "type": "string" },
+                  "match": { "type": "string" },
+                  "userRole": { "type": "string", "default": "Fan" },
+                  "language": { "type": "string", "default": "English" },
+                  "location": { "type": "string" },
+                  "destination": { "type": "string" },
+                  "accessibilityNeeds": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                  }
+                },
+                "required": ["stadium", "destination", "accessibilityNeeds"]
+              }
+            }
+          }
+        },
+        "responses": { "200": { "description": "Accessibility guidance" } }
+      }
+    },
+    "/transport/recommend": {
+      "post": {
+        "summary": "Transport Intelligence",
+        "description": "AI-powered transportation recommendations.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "stadium": { "type": "string" },
+                  "match": { "type": "string" },
+                  "userRole": { "type": "string", "default": "Fan" },
+                  "language": { "type": "string", "default": "English" },
+                  "currentLocation": { "type": "string" },
+                  "destination": { "type": "string" },
+                  "transportMode": { "type": "string" },
+                  "groupSize": { "type": "number", "default": 1 },
+                  "wheelchair": { "type": "boolean", "default": false },
+                  "avoidCrowd": { "type": "boolean", "default": false }
+                },
+                "required": ["stadium", "currentLocation", "destination"]
+              }
+            }
+          }
+        },
+        "responses": { "200": { "description": "Transport recommendations" } }
+      }
+    },
+    "/operations/summary": {
+      "post": {
+        "summary": "Organizer Command Center",
+        "description": "Operations intelligence summary.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "stadium": { "type": "string" },
+                  "match": { "type": "string" },
+                  "userRole": { "type": "string", "default": "Organizer" },
+                  "language": { "type": "string", "default": "English" },
+                  "timeToKickoff": { "type": "string" },
+                  "crowdStatus": { "type": "string" },
+                  "transportStatus": { "type": "string" },
+                  "weather": { "type": "string" },
+                  "activeAlerts": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                  }
+                },
+                "required": ["stadium", "crowdStatus", "transportStatus"]
+              }
+            }
+          }
+        },
+        "responses": { "200": { "description": "Operations summary" } }
+      }
+    },
+    "/emergency/assist": {
+      "post": {
+        "summary": "Emergency & Incident Response",
+        "description": "AI guidance for stadium incidents.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "incidentType": { "type": "string" },
+                  "location": { "type": "string" },
+                  "stadium": { "type": "string" },
+                  "language": { "type": "string", "default": "English" },
+                  "userRole": { "type": "string", "default": "Fan" }
+                },
+                "required": ["incidentType", "location", "stadium"]
+              }
+            }
+          }
+        },
+        "responses": { "200": { "description": "Emergency guidance" } }
+      }
+    }
+  }
+}
