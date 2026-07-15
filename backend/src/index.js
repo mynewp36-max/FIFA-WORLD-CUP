@@ -68,7 +68,7 @@ app.use((0, cors_1.default)({
 }));
 const compression_1 = __importDefault(require("compression"));
 // 2.5 Compression (Gzip Only)
-app.use((req, res, next) => {
+app.use((req, _res, next) => {
     const acceptEncoding = req.headers['accept-encoding'];
     if (typeof acceptEncoding === 'string' && acceptEncoding.includes('gzip')) {
         // Force compression to use gzip exclusively by overriding the header

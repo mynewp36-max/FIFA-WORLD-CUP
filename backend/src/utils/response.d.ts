@@ -1,5 +1,5 @@
 import { Request } from 'express';
-export interface ApiResponse<T = any> {
+export interface ApiResponse<T = unknown> {
     success: boolean;
     data: T | null;
     message: string;

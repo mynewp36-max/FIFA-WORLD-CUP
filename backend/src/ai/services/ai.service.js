@@ -11,6 +11,7 @@ const jsonParser_1 = require("../../utils/jsonParser");
 const retry_1 = require("../utils/retry");
 const timeout_1 = require("../utils/timeout");
 const cache_1 = require("../utils/cache");
+const sanitizer_1 = require("../utils/sanitizer");
 const CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes
 class AiService {
     /**
@@ -25,8 +26,9 @@ class AiService {
             if (params.userId && !params.context) {
                 params.context = context_manager_1.contextManager.getContext(params.userId);
             }
+            const sanitizedMessage = (0, sanitizer_1.sanitizePromptInput)(params.userMessage);
             const finalPrompt = (0, prompt_builder_1.buildLayeredPrompt)({
-                userMessage: params.userMessage,
+                userMessage: sanitizedMessage,
                 context: params.context,
                 targetLanguage: params.targetLanguage,
                 taskSpecificRules: params.taskSpecificRules
@@ -63,7 +65,7 @@ class AiService {
                     });
                     clearTimeout(timeoutId);
                     if (!res.ok) {
-                        let errorBody = {};
+                        let errorBody = null;
                         try {
                             errorBody = await res.json();
                         }
@@ -72,10 +74,10 @@ class AiService {
                         }
                         logger_1.aiLogger.error(`OpenRouter API error ${res.status}`, {
                             status: res.status,
-                            errorMessage: errorBody.error?.message || errorBody.message || 'Unknown error',
-                            providerMessage: errorBody.error?.metadata?.provider_message || errorBody.error?.metadata?.provider_name || undefined,
-                            model: errorBody.error?.metadata?.model || payload.model,
-                            code: errorBody.error?.code || undefined,
+                            errorMessage: errorBody?.error?.message || errorBody?.message || 'Unknown error',
+                            providerMessage: errorBody?.error?.metadata?.provider_message || errorBody?.error?.metadata?.provider_name || undefined,
+                            model: errorBody?.error?.metadata?.model || payload.model,
+                            code: errorBody?.error?.code || undefined,
                             rawBody: errorBody
                         });
                         switch (res.status) {
@@ -91,7 +93,7 @@ class AiService {
                     return await res.json();
                 }
                 catch (err) {
-                    if (err.name === 'AbortError') {
+                    if (err instanceof Error && err.name === 'AbortError') {
                         throw new errors_1.TimeoutError('OpenRouter request timed out');
                     }
                     throw err;
@@ -109,11 +111,12 @@ class AiService {
         }
     }
     static async generateResponse(userId, userMessage) {
-        return this.execute({
+        const result = await this.execute({
             actionName: 'generateResponse',
             userId,
             userMessage
         });
+        return result;
     }
     static async generateStructuredResponse(userId, userMessage, schema) {
         const cacheKey = cache_1.aiCache.generateKey('structured', { userId, userMessage, schema });

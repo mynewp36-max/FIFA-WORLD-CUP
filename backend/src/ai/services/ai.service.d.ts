@@ -6,7 +6,7 @@ export declare class AiService {
      */
     private static execute;
     static generateResponse(userId: string, userMessage: string): Promise<string>;
-    static generateStructuredResponse(userId: string, userMessage: string, schema: any): Promise<any>;
+    static generateStructuredResponse<T>(userId: string, userMessage: string, schema: Record<string, unknown>): Promise<T>;
     static summarize(text: string): Promise<string>;
     static translate(text: string, targetLanguage: string): Promise<string>;
 }

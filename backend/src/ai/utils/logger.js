@@ -11,7 +11,7 @@ class StructuredLogger {
         if (meta) {
             // Extract specific top-level properties if they exist, otherwise keep them in metadata
             // Shallow copy to avoid mutating the original object
-            const metaCopy = { ...meta };
+            const metaCopy = typeof meta === 'object' && meta !== null ? { ...meta } : { raw: meta };
             if (metaCopy.requestId) {
                 payload.requestId = metaCopy.requestId;
                 delete metaCopy.requestId;

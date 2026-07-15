@@ -1,9 +1,9 @@
 declare class StructuredLogger {
     private log;
-    info(message: string, meta?: any): void;
-    debug(message: string, meta?: any): void;
-    warn(message: string, meta?: any): void;
-    error(message: string, errorOrMeta?: any): void;
+    info(message: string, meta?: unknown): void;
+    debug(message: string, meta?: unknown): void;
+    warn(message: string, meta?: unknown): void;
+    error(message: string, errorOrMeta?: unknown): void;
 }
 export declare const aiLogger: StructuredLogger;
 export {};

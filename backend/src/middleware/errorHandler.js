@@ -4,7 +4,7 @@ exports.notFoundHandler = exports.errorHandler = void 0;
 const logger_1 = require("../ai/utils/logger");
 const response_1 = require("../utils/response");
 const errors_1 = require("../utils/errors");
-const errorHandler = (err, req, res, next) => {
+const errorHandler = (err, req, res, _next) => {
     // Determine if it's an operational error we threw intentionally
     const isOperational = err instanceof errors_1.AppError;
     const statusCode = isOperational ? err.statusCode : 500;
@@ -24,7 +24,7 @@ const errorHandler = (err, req, res, next) => {
     res.status(statusCode).json((0, response_1.sendResponse)(req, false, null, message));
 };
 exports.errorHandler = errorHandler;
-const notFoundHandler = (req, res, next) => {
+const notFoundHandler = (_req, _res, next) => {
     // Pass a structured NotFoundError to the central error handler
     next(new errors_1.NotFoundError('Route not found'));
 };
