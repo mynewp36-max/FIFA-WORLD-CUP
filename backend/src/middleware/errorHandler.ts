@@ -3,7 +3,7 @@ import { aiLogger } from '../ai/utils/logger';
 import { sendResponse } from '../utils/response';
 import { AppError, NotFoundError } from '../utils/errors';
 
-export const errorHandler = (err: any, req: Request, res: Response, _next: NextFunction): void => {
+export const errorHandler = (err: unknown, req: Request, res: Response, _next: NextFunction): void => {
   // Determine if it's an operational error we threw intentionally
   const isOperational = err instanceof AppError;
   const statusCode = isOperational ? err.statusCode : 500;

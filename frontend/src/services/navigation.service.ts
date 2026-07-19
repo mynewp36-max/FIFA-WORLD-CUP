@@ -1,7 +1,6 @@
 import type { NavigationRequest, NavigationResponse } from '../types/navigation';
 import { apiClient } from '../utils/apiClient';
-
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+import { API_BASE_URL } from '../config/api.config';
 
 export class NavigationService {
   public static async getRoute(request: NavigationRequest): Promise<NavigationResponse> {

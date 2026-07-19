@@ -54,6 +54,18 @@ CROWD-AVOIDANCE STRATEGY:
 - Recommend secondary exits and lesser-known routes.
 - Mark crowdImpact accurately.`;
 
+const sustainabilityGuidance = `
+SUSTAINABILITY & ECO-FRIENDLY STRATEGY:
+- Prioritize walking, cycling, or electric public transit over fossil-fuel vehicles.
+- Emphasize the carbon footprint savings of the journey.
+- Provide a concrete 'carbonSaved' value (e.g. "2.4 kg CO2 saved").`;
+
+const weatherGuidance = (weather: string) => `
+WEATHER CONTEXT (${weather}):
+- If raining or extreme heat, de-prioritize long walking routes.
+- Suggest covered walkways or underground transit if applicable.
+- Add specific travelTips for the weather conditions.`;
+
 // ─── Main prompt builder ───
 
 export const buildTransportPrompt = (req: TransportRequest): string => {
@@ -67,6 +79,8 @@ export const buildTransportPrompt = (req: TransportRequest): string => {
   if (req.groupSize > 1) snippets.push(groupGuidance(req.groupSize));
   if (req.wheelchair) snippets.push(accessibilityGuidance);
   if (req.avoidCrowd) snippets.push(avoidCrowdGuidance);
+  if (req.ecoFriendly) snippets.push(sustainabilityGuidance);
+  if (req.weather) snippets.push(weatherGuidance(req.weather));
 
   return `You are the FIFA World Cup 2026 Transport Intelligence Engine deployed at ${req.stadium}.
 Your goal is to provide the most effective, safe, and personalised transport recommendation for this visitor.
@@ -80,6 +94,8 @@ VISITOR CONTEXT:
 - Group Size: ${req.groupSize}
 - Wheelchair Required: ${req.wheelchair ? 'YES' : 'NO'}
 - Avoid Crowds: ${req.avoidCrowd ? 'YES' : 'NO'}
+- Eco-Friendly Preference: ${req.ecoFriendly ? 'YES' : 'NO'}
+- Weather: ${req.weather || 'Clear'}
 - Language: ${req.language}
 
 ROLE-SPECIFIC RULES:

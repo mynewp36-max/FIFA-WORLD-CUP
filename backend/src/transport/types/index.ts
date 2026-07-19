@@ -10,6 +10,8 @@ export interface TransportRequest {
   wheelchair: boolean;
   avoidCrowd: boolean;
   groupSize: number;
+  ecoFriendly?: boolean;
+  weather?: string;
 }
 
 export interface TransportResponse {
@@ -21,6 +23,7 @@ export interface TransportResponse {
   crowdImpact: string;
   priority: string;
   travelTips: string[];
+  carbonSaved?: string;
 }
 
 export const TransportResponseSchema = {
@@ -60,6 +63,10 @@ export const TransportResponseSchema = {
       items: { type: 'string' },
       description: 'Practical safety and comfort tips tailored to this visitor.',
     },
+    carbonSaved: {
+      type: 'string',
+      description: 'Estimated carbon emissions saved if eco-friendly transport is chosen (e.g. "2.4 kg CO2").',
+    },
   },
   required: [
     'summary',
@@ -70,5 +77,6 @@ export const TransportResponseSchema = {
     'crowdImpact',
     'priority',
     'travelTips',
+    'carbonSaved'
   ],
 };

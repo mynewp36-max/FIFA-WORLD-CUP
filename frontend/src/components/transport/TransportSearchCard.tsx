@@ -2,7 +2,7 @@ import React from 'react';
 import { Input } from '../Input';
 import { Button } from '../Button';
 import { Card } from '../Card';
-import type {  UserRole  } from '../../types/transport';
+import type { UserRole } from '../../types/transport';
 import { MapPin, Users } from 'lucide-react';
 
 const ROLES: UserRole[] = ['Fan', 'Volunteer', 'Organizer', 'Staff', 'VIP', 'Family', 'International'];
@@ -24,7 +24,7 @@ interface TransportSearchCardProps {
   isLoading: boolean;
 }
 
-export const TransportSearchCard: React.FC<TransportSearchCardProps> = ({
+export const TransportSearchCard: React.FC<TransportSearchCardProps> = ({ 
   currentLocation, setCurrentLocation,
   destination, setDestination,
   userRole, setUserRole,

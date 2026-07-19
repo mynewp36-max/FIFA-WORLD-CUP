@@ -7,12 +7,12 @@ interface CacheEntry<T> {
 }
 
 class InMemoryCache {
-  private cache: Map<string, CacheEntry<any>> = new Map();
+  private cache: Map<string, CacheEntry<unknown>> = new Map();
 
   /**
    * Generates a deterministic hash key from an object or string.
    */
-  public generateKey(prefix: string, payload: any): string {
+  public generateKey(prefix: string, payload: unknown): string {
     const data = typeof payload === 'string' ? payload : JSON.stringify(payload);
     const hash = crypto.createHash('sha256').update(data).digest('hex');
     return `${prefix}:${hash}`;

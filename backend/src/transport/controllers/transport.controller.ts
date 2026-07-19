@@ -38,7 +38,7 @@ export class TransportController {
       aiLogger.info(`Transport response generated in ${responseTime}ms`);
 
       res.status(200).json(sendResponse(req, true, result, 'Transport recommendation generated successfully.'));
-    } catch (error: any) {
+    } catch (error: unknown) {
       next(error);
     }
   }

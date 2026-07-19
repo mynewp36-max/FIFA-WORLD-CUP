@@ -27,7 +27,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ messages, isLoading, err
   }
 
   return (
-    <div className="flex-1 overflow-y-auto px-4 py-6 scroll-smooth">
+    <div className="flex-1 overflow-y-auto px-4 py-6 scroll-smooth" role="log" aria-live="polite">
       <div className="max-w-4xl mx-auto flex flex-col relative">
         {messages.map((msg, index) => {
           // Pass isLast and onRegenerate only to the very last message in the list

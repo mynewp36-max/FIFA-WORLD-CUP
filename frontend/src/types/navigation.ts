@@ -6,6 +6,8 @@ export interface NavigationRequest {
   wheelchair: boolean;
   avoidCrowd: boolean;
   language: string;
+  ecoFriendly?: boolean;
+  weather?: string;
 }
 
 export interface RouteStep {
@@ -29,5 +31,6 @@ export interface NavigationResponse {
   alternateRouteAvailable: boolean;
   routeCongestion: string;
   warnings: string[];
+  ecoBenefits?: string;
   error?: string;
 }

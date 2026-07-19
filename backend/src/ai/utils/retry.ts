@@ -5,10 +5,17 @@ export interface RetryOptions {
   baseDelayMs?: number;
 }
 
+/** Shape of errors that may carry an HTTP status code. */
+interface StatusError extends Error {
+  status?: number;
+  statusCode?: number;
+  response?: { status?: number };
+}
+
 /**
- * Reusable utility to wrap async operations with an exponential backoff retry strategy.
- * Specifically handles distinguishing between transient failures (network, 5xx) and 
- * permanent failures (400 validation errors).
+ * Reusable utility to wrap async operations with an exponential backoff retry
+ * strategy. Distinguishes between transient failures (network, 5xx) and
+ * permanent failures (400 validation errors) — only transient errors are retried.
  */
 export const withRetry = async <T>(
   operation: () => Promise<T>,
@@ -22,34 +29,44 @@ export const withRetry = async <T>(
   while (true) {
     try {
       return await operation();
-    } catch (error: any) {
+    } catch (rawError: unknown) {
       attempt++;
 
-      // Extract status code from various standard error shapes (fetch, axios, custom AppErrors)
-      const status = error?.status || error?.response?.status || error?.statusCode;
-      
-      // We explicitly DO NOT retry 400 (Validation), 401 (Auth), 403 (Forbidden), 404 (Not Found)
-      const isTransient = 
-        !status || // Network disconnected, DNS failures, etc (no HTTP status)
-        status >= 500 || // Internal server errors upstream
-        status === 429 || // Rate limits
+      const error = rawError as StatusError;
+      // Extract status code from various standard error shapes
+      const status = error?.status ?? error?.response?.status ?? error?.statusCode;
+
+      // Do NOT retry 400, 401, 403, 404 — these are permanent failures
+      const isTransient =
+        !status || // Network disconnected, DNS failures (no HTTP status)
+        status >= 500 || // Upstream server errors
+        status === 429 || // Rate limiting — back off and retry
         error.message?.toLowerCase().includes('timeout') ||
         error.message?.toLowerCase().includes('network');
 
       if (!isTransient || attempt > maxRetries) {
         if (!isTransient) {
-          aiLogger.error(`[Retry Bypassed] ${context} encountered a permanent error (Status: ${status}).`, error);
+          aiLogger.error(
+            `[Retry Bypassed] ${context} encountered a permanent error (Status: ${status}).`,
+            error
+          );
         } else {
-          aiLogger.error(`[Retry Exhausted] ${context} failed after ${attempt} attempts.`, error);
+          aiLogger.error(
+            `[Retry Exhausted] ${context} failed after ${attempt} attempts.`,
+            error
+          );
         }
         throw error;
       }
 
       // Exponential backoff: baseDelay * 2^(attempt-1)
       const delay = baseDelayMs * Math.pow(2, attempt - 1);
-      aiLogger.warn(`[Retry] ${context} attempt ${attempt} failed (Transient). Retrying in ${delay}ms...`, { error: error.message, attempt, status });
-      
-      await new Promise((resolve) => setTimeout(resolve, delay));
+      aiLogger.warn(
+        `[Retry] ${context} attempt ${attempt} failed (Transient). Retrying in ${delay}ms...`,
+        { errorMessage: error.message, attempt, status }
+      );
+
+      await new Promise<void>((resolve) => setTimeout(resolve, delay));
     }
   }
 };

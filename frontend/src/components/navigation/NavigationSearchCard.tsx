@@ -5,6 +5,8 @@ import { Input } from '../Input';
 import type {  NavigationRequest  } from '../../types/navigation';
 import { MapPin, Search } from 'lucide-react';
 
+import { useSettings } from '../../hooks/useSettings';
+
 interface NavigationSearchCardProps {
   onSearch: (request: NavigationRequest) => void;
   isLoading: boolean;
@@ -13,6 +15,7 @@ interface NavigationSearchCardProps {
 export const NavigationSearchCard: React.FC<NavigationSearchCardProps> = ({ onSearch, isLoading }) => {
   const [currentLocation, setCurrentLocation] = useState('');
   const [destination, setDestination] = useState('');
+  const { settings } = useSettings();
 
   const handleSearch = () => {
     if (!currentLocation.trim() || !destination.trim()) return;
@@ -22,9 +25,11 @@ export const NavigationSearchCard: React.FC<NavigationSearchCardProps> = ({ onSe
       destination,
       stadium: 'MetLife Stadium',
       userRole: 'Fan',
-      wheelchair: false,
-      avoidCrowd: false,
-      language: 'English'
+      wheelchair: settings.accessibility.wheelchair,
+      avoidCrowd: settings.notifications.crowdAlerts,
+      language: settings.language.preferred,
+      ecoFriendly: settings.sustainability?.ecoFriendly ?? true,
+      weather: 'Clear' // Mock weather for now, in a real app this would come from a weather service
     });
   };
 

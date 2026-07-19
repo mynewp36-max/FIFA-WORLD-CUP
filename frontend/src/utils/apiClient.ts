@@ -7,7 +7,7 @@ export class ApiError extends Error {
   }
 }
 
-export class TimeoutError extends Error {
+class TimeoutError extends Error {
   constructor(message = 'Request timed out') {
     super(message);
     this.name = 'TimeoutError';

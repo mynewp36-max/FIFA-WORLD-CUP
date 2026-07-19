@@ -24,7 +24,7 @@ export class NavigationController {
       aiLogger.info(`Navigation generated in ${responseTime}ms`);
       
       res.status(200).json(sendResponse(req, true, routeResponse, 'Route calculated successfully.'));
-    } catch (error: any) {
+    } catch (error: unknown) {
       next(error);
     }
   }

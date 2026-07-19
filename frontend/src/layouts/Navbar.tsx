@@ -17,7 +17,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onMenuToggle }) => {
     <>
       <header className="h-16 bg-bg-base/80 backdrop-blur-md border-b border-border-subtle flex items-center justify-between px-4 md:px-6 sticky top-0 z-20">
         <div className="flex items-center gap-3 text-text-muted">
-          <button className="md:hidden p-2 text-text-muted hover:text-text-main" onClick={onMenuToggle}>
+          <button aria-label="Toggle Sidebar" className="md:hidden p-2 text-text-muted hover:text-text-main" onClick={onMenuToggle}>
             <Menu size={24} />
           </button>
           <span className="text-sm font-medium hidden sm:block">FIFA Stadium Companion</span>
@@ -25,6 +25,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onMenuToggle }) => {
         
         <div className="flex items-center space-x-2 md:space-x-4">
           <button 
+            aria-label="View Notifications"
+            aria-expanded={isNotificationsOpen}
             className="p-2 text-text-muted hover:text-text-main relative transition-colors"
             onClick={() => setIsNotificationsOpen(true)}
           >
@@ -33,6 +35,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onMenuToggle }) => {
           </button>
           <div className="flex items-center space-x-3 border-l border-border-subtle pl-4 relative">
             <button 
+              aria-label="View Profile"
+              aria-expanded={isProfileOpen}
               className="w-8 h-8 rounded-full bg-brand-primary flex items-center justify-center text-white focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 focus:ring-offset-bg-base"
               onClick={() => setIsProfileOpen(true)}
             >

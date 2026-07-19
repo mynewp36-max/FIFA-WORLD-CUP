@@ -1,0 +1,1 @@
+{"version":3,"file":"emergency.service.d.ts","sourceRoot":"","sources":["../../../src/emergency/services/emergency.service.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,gBAAgB,EAAE,iBAAiB,EAA2B,MAAM,UAAU,CAAC;AAIxF,qBAAa,gBAAgB;WACP,MAAM,CACxB,OAAO,EAAE,gBAAgB,EACzB,MAAM,GAAE,MAAiB,GACxB,OAAO,CAAC,iBAAiB,CAAC;CAyB9B"}

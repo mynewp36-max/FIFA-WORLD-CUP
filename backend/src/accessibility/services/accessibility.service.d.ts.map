@@ -1,1 +1,0 @@
-{"version":3,"file":"accessibility.service.d.ts","sourceRoot":"","sources":["accessibility.service.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,oBAAoB,EAAE,qBAAqB,EAA+B,MAAM,UAAU,CAAC;AAIpG,qBAAa,oBAAoB;WACX,MAAM,CACxB,OAAO,EAAE,oBAAoB,EAC7B,MAAM,GAAE,MAAiB,GACxB,OAAO,CAAC,qBAAqB,CAAC;CAyBlC"}

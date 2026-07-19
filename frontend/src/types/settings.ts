@@ -38,5 +38,8 @@ export interface UserSettings {
     crashReports: boolean;
     locationSharing: 'Private' | 'While Using' | 'Always';
   };
+  sustainability: {
+    ecoFriendly: boolean;
+  };
   emergencyContacts: EmergencyContact[];
 }

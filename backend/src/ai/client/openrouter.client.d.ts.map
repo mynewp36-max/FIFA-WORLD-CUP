@@ -1,1 +1,0 @@
-{"version":3,"file":"openrouter.client.d.ts","sourceRoot":"","sources":["openrouter.client.ts"],"names":[],"mappings":"AAGA,qBAAa,gBAAgB;IAC3B,OAAO,CAAC,MAAM,CAAC,QAAQ,CAAmB;IAC1C,OAAO,CAAC,QAAQ,CAAC,OAAO,CAAkC;IAE1D,OAAO;WAQO,WAAW,IAAI,gBAAgB;IAOtC,UAAU,IAAI,WAAW;IAOzB,WAAW,IAAI,MAAM;CAG7B;AAED,eAAO,MAAM,mBAAmB,wBAAuC,CAAC"}

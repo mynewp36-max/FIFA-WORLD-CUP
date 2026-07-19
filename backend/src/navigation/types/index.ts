@@ -6,6 +6,8 @@ export interface NavigationRequest {
   wheelchair: boolean;
   avoidCrowd: boolean;
   language: string;
+  ecoFriendly?: boolean;
+  weather?: string;
 }
 
 export interface NavigationResponse {
@@ -27,6 +29,7 @@ export interface NavigationResponse {
   alternateRouteAvailable: boolean;
   routeCongestion: string;
   warnings: string[];
+  ecoBenefits?: string;
 }
 
 export const NavigationResponseSchema = {
@@ -94,6 +97,10 @@ export const NavigationResponseSchema = {
       },
       description: "Any warnings like 'Stairs ahead', 'Heavy crowd', 'Restricted access'.",
     },
+    ecoBenefits: {
+      type: "string",
+      description: "Environmental benefits of this route (e.g., '0 emissions', 'Reduces carbon footprint by 1.2kg').",
+    },
   },
   required: [
     "route", 
@@ -107,6 +114,7 @@ export const NavigationResponseSchema = {
     "numberOfTurns",
     "alternateRouteAvailable",
     "routeCongestion",
-    "warnings"
+    "warnings",
+    "ecoBenefits"
   ],
 };

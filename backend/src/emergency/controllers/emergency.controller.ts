@@ -39,7 +39,7 @@ export class EmergencyController {
       aiLogger.info(`Emergency response generated in ${responseTime}ms | Priority: ${result.priority}`);
 
       res.status(200).json(sendResponse(req, true, result, 'Emergency guidance generated successfully.'));
-    } catch (error: any) {
+    } catch (error: unknown) {
       next(error);
     }
   }

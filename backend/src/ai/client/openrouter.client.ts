@@ -1,7 +1,7 @@
 import { AI_CONFIG } from '../config';
 import { aiLogger } from '../utils/logger';
 
-export class OpenRouterClient {
+class OpenRouterClient {
   private static instance: OpenRouterClient;
   private readonly baseUrl = 'https://openrouter.ai/api/v1';
 

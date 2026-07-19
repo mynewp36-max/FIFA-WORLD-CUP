@@ -88,18 +88,23 @@ export class AiService {
               if (!res.ok) {
                 let errorBody: Record<string, unknown> | null = null;
                 try {
-                  errorBody = await res.json();
-                } catch (e) {
+                  errorBody = await res.json() as Record<string, unknown>;
+                } catch (_parseErr) {
                   errorBody = { message: res.statusText };
                 }
 
+                // Type-safely access nested OpenRouter error structure
+                interface OpenRouterErrorMeta { provider_message?: string; provider_name?: string; model?: string; }
+                interface OpenRouterErrorObj { message?: string; code?: string; metadata?: OpenRouterErrorMeta; }
+                const errObj = (errorBody?.error ?? {}) as OpenRouterErrorObj;
                 aiLogger.error(`OpenRouter API error ${res.status}`, {
-                  status: res.status,
-                  errorMessage: (errorBody as Record<string, any>)?.error?.message || (errorBody as Record<string, any>)?.message || 'Unknown error',
-                  providerMessage: (errorBody as Record<string, any>)?.error?.metadata?.provider_message || (errorBody as Record<string, any>)?.error?.metadata?.provider_name || undefined,
-                  model: (errorBody as Record<string, any>)?.error?.metadata?.model || payload.model,
-                  code: (errorBody as Record<string, any>)?.error?.code || undefined,
-                  rawBody: errorBody
+                  providerError: {
+                    errorMessage: errObj.message ?? (errorBody?.message as string | undefined) ?? 'Unknown error',
+                    providerMessage: errObj.metadata?.provider_message ?? errObj.metadata?.provider_name,
+                    model: errObj.metadata?.model ?? payload.model,
+                    code: errObj.code,
+                  },
+                  rawBody: errorBody,
                 });
 
                 switch (res.status) {

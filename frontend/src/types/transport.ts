@@ -10,6 +10,8 @@ export interface TransportRequest {
   wheelchair: boolean;
   avoidCrowd: boolean;
   groupSize: number;
+  ecoFriendly?: boolean;
+  weather?: string;
 }
 
 export interface TransportResponse {
@@ -24,5 +26,6 @@ export interface TransportResponse {
   warnings?: string[];
   confidence?: string;
   recommendedDeparture?: string;
+  carbonSaved?: string;
   error?: string;
 }

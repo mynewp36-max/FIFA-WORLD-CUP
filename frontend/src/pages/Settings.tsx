@@ -13,6 +13,7 @@ import {
   NotificationsSection, 
   AccessibilitySection, 
   PrivacySection, 
+  SustainabilitySection,
   EmergencyContactsSection 
 } from '../components/settings/SettingsSections';
 
@@ -48,7 +49,7 @@ export const Settings: React.FC = () => {
     try {
       await saveSettings(localSettings);
       showToast('Settings saved successfully!', 'success');
-    } catch (e) {
+    } catch {
       showToast('Failed to save settings. Please try again.', 'error');
     } finally {
       setIsSaving(false);
@@ -99,6 +100,11 @@ export const Settings: React.FC = () => {
             <AccessibilitySection 
               accessibility={localSettings.accessibility} 
               onChange={accessibility => setLocalSettings({ ...localSettings, accessibility })} 
+            />
+
+            <SustainabilitySection 
+              sustainability={localSettings.sustainability} 
+              onChange={sustainability => setLocalSettings({ ...localSettings, sustainability })} 
             />
             
             <PrivacySection 

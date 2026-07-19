@@ -35,6 +35,9 @@ const defaultSettings: UserSettings = {
     crashReports: true,
     locationSharing: 'While Using',
   },
+  sustainability: {
+    ecoFriendly: true, // Default to true to promote sustainability as per objective
+  },
   emergencyContacts: [],
 };
 

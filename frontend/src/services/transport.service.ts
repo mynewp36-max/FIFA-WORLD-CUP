@@ -1,7 +1,6 @@
 import type { TransportRequest, TransportResponse } from '../types/transport';
 import { apiClient } from '../utils/apiClient';
-
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+import { API_BASE_URL } from '../config/api.config';
 
 export class TransportService {
   public static async recommend(request: TransportRequest): Promise<TransportResponse> {

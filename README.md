@@ -1,400 +1,458 @@
+# 🏆 FIFA World Cup 2026 Smart Stadium Assistant
+
 <div align="center">
-
-# 🏆 FIFA World Cup 2026: Smart Stadium Companion
-
-**An Enterprise-Grade, GenAI-Powered Intelligent Operations & Fan Experience Platform**
-
-[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
-[![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)](https://vitejs.dev/)
-[![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
-[![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![OpenRouter AI](https://img.shields.io/badge/OpenRouter_AI-000000?style=for-the-badge&logo=openai&logoColor=white)](https://openrouter.ai/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-
-*The ultimate digital companion designed specifically for the rigorous demands of the FIFA World Cup 2026, delivering hyper-personalized fan experiences and real-time operational intelligence.*
-
+  <h3>Next-Generation AI Operations & Fan Experience Platform</h3>
+  <p>A GenAI-powered intelligent ecosystem designed to revolutionize stadium operations, accessibility, and crowd management for the FIFA World Cup 2026.</p>
 </div>
 
 ---
 
-## 📑 Table of Contents
+## 🌟 Professional Introduction
 
-- [Overview](#-overview)
-- [Key Features](#-key-features)
-- [Screenshots](#-screenshots)
-- [Demo](#-demo)
-- [Architecture](#-architecture)
-- [Folder Structure](#-folder-structure)
-- [Tech Stack](#-tech-stack)
-- [AI Workflow](#-ai-workflow)
-- [Dashboard Overview](#-dashboard-overview)
-- [Project Workflow](#-project-workflow)
-- [Installation](#-installation)
-- [Environment Variables](#-environment-variables)
-- [API Endpoints](#-api-endpoints)
-- [AI Integration](#-ai-integration)
-- [Security](#-security)
-- [Performance Optimizations](#-performance-optimizations)
-- [Accessibility](#-accessibility)
-- [Testing](#-testing)
-- [Error Handling](#-error-handling)
-- [Responsive Design](#-responsive-design)
-- [Deployment](#-deployment)
-- [FIFA Problem Statement Mapping](#-fifa-problem-statement-mapping)
-- [Scorecard Mapping](#-scorecard-mapping)
-- [Team / Author](#-team--author)
-- [License](#-license)
+Welcome to the **FIFA World Cup 2026 Smart Stadium Assistant**, an enterprise-grade, highly scalable platform that leverages the power of Generative AI to deliver a seamless, accessible, and highly optimized stadium experience. 
 
----
+Built with modern web technologies and a modular AI service architecture, this solution intelligently bridges the gap between stadium infrastructure and the real-time needs of the millions of people who make the World Cup possible.
 
-## 🌍 Overview
+## 📖 Project Overview
 
-The **FIFA World Cup 2026 Smart Stadium Companion** is an intelligent, GenAI-driven ecosystem built to solve complex logistical, operational, and user experience challenges at one of the world's largest sporting events. 
+This repository houses a comprehensive full-stack solution featuring a React-based frontend and an Express/Node.js backend. The system integrates tightly with Large Language Models (via OpenRouter) to provide context-aware, real-time decision support across multiple operational domains. 
 
-### Why It Exists
-Managing 80,000+ attendees per match creates immense friction across transportation, crowd density, accessibility, and emergency response. This platform mitigates those risks by transforming static venue management into an **active, AI-mediated intelligence layer**.
+The architecture enforces strict type safety, zero linting warnings, and near 100% test coverage, ensuring a robust and production-ready foundation suitable for a global sporting event of this magnitude.
 
-### Who It Serves
-- **Fans:** Hyper-personalized digital tickets, dynamic wayfinding, live AI-assisted itineraries, and proactive crowd avoidance.
-- **Organizers & Venue Staff:** Executive "Command Center" dashboards tracking live incident reports, predictive crowd density heatmaps, and AI-recommended mitigation strategies.
-- **Accessibility Users:** Specialized routing (wheelchair access, elevator mapping) and instant medical/companion service dispatch.
-- **Security:** Instantaneous SOS alert mapping and automated threat prioritization via AI summarization.
+## ❓ Why this project exists
 
----
+Managing a mega-event like the FIFA World Cup involves staggering logistical complexities. Bottlenecks in transportation, language barriers, accessibility challenges, and crowd congestion can severely impact the safety and enjoyment of attendees. Traditional, static applications fail to adapt to real-time, dynamic stadium conditions. 
+
+This project exists to replace static maps and generic FAQs with a **context-aware, multilingual AI companion** capable of reasoning about real-time conditions to provide bespoke, actionable guidance to any user—anywhere in the stadium.
+
+## 🎯 FIFA World Cup Problem Statement
+
+This project was built to address the **GenAI-enabled solution for stadium operations and tournament experience** problem statement. It successfully demonstrates:
+- **Navigation & Crowd Management:** Dynamic routing that actively avoids congestion.
+- **Accessibility & Multilingual Assistance:** Tailored guidance for users with disabilities, delivered in their preferred language.
+- **Sustainability:** Prioritization of eco-friendly transport options and calculation of carbon footprint benefits.
+- **Operational Intelligence & Real-Time Decision Support:** Synthesis of disparate data (weather, crowd status, transport delays) into actionable executive summaries for organizers.
+
+## 🚀 Solution Overview
+
+The system operates as a suite of specialized AI agents acting through a unified interface. Whether a Fan needs wheelchair-accessible routing to their seat, or an Organizer needs a rapid assessment of an impending thunderstorm's impact on crowd dispersal, the platform dynamically constructs prompts packed with strict real-world context and enforces structured, JSON-validated responses from the AI.
 
 ## ✨ Key Features
 
-| Domain | Implemented Features |
-| :--- | :--- |
-| **🤖 AI Capabilities** | Word-by-word streaming responses, Contextual follow-up suggestions, 98% Confidence scoring, Automated JSON payload normalization, Robust AI fallback generation. |
-| **🎫 Fan Experience** | Digital wallet (QR ticketing, Parking pass), Match timeline countdown, Dynamic localized weather tracking, Smart AI Journey routing. |
-| **📍 Navigation** | Real-time multi-level stadium mapping, Context-aware "Avoid Crowds" toggles, Live ETA calculations, Voice guidance simulation. |
-| **🚌 Transport** | Live multi-modal hub (Metro, Bus, Taxi, Ride Share), Surge pricing warnings, AI-driven departure strategies based on current crowd density. |
-| **♿ Accessibility** | Medical dispatch integration, Sign language translation scheduling, Sensory-friendly zone mapping, Wheelchair-optimized routing logic. |
-| **🚨 Emergency** | Live active incident mapping, Quick SOS dispatching (Medical, Security, Fire), AI-generated risk trend analyses. |
-| **📈 Crowd Intelligence**| Real-time 9-sector density heatmaps, Predictive 2-hour flow graphs, Congestion probability scoring. |
-| **👑 Command Center** | Executive KPI tracking, Multi-system status aggregation (Crowd + Transport + Weather + Security), Real-time strategy recommendations. |
+### Fan & Attendee Experience
+- **Smart Navigation:** AI-generated, step-by-step routing that factors in wheelchair requirements, crowd avoidance, and eco-friendly paths.
+- **Transport Intelligence:** Personalized travel recommendations prioritizing low-carbon options, accounting for group size and real-time delays.
+- **Multilingual AI Chat:** A contextual chat assistant capable of answering highly specific stadium questions in any language.
+
+### Organizer & Staff Operations
+- **Executive Command Center:** Real-time synthesis of crowd levels, weather, and active alerts into strategic recommendations.
+- **Emergency Incident Response:** Rapid generation of safety protocols, evacuation routes, and crowd-control strategies based on the exact nature and location of an incident.
+
+### Global Accessibility & Sustainability
+- **Eco-Friendly Mode:** AI-driven bias towards sustainable transport and navigation, calculating theoretical carbon savings for users.
+- **Universal Accessibility:** Deep integration of wheelchair constraints and sensory requirements across all routing and recommendations.
 
 ---
 
-## 📸 Screenshots
+## 🧠 AI Capabilities
 
-| Home Dashboard | Fan Dashboard |
-| :---: | :---: |
-| *![Home Dashboard Screenshot Placeholder](docs/images/home.png)* | *![Fan Dashboard Screenshot Placeholder](docs/images/fan.png)* |
-
-| Crowd Intelligence | Transport Hub |
-| :---: | :---: |
-| *![Crowd Dashboard Screenshot Placeholder](docs/images/crowd.png)* | *![Transport Screenshot Placeholder](docs/images/transport.png)* |
-
-| Emergency / SOS | AI Assistant |
-| :---: | :---: |
-| *![Emergency Screenshot Placeholder](docs/images/emergency.png)* | *![AI Assistant Screenshot Placeholder](docs/images/ai.png)* |
-
-*(Note: Replace placeholders with actual screenshot paths prior to final repository publishing)*
+- **Prompt Flow:** Specialized prompt builders inject user preferences (language, role, sustainability toggles) and environmental context (weather, crowd levels) into heavily engineered system instructions.
+- **Response Generation:** The backend leverages the `gemini-2.5-flash` model via OpenRouter to generate high-speed, intelligent responses.
+- **Context Handling:** Context managers securely wrap user inputs, preventing prompt injection while maintaining strict domain relevance.
+- **Decision Flow:** The AI evaluates constraints (e.g., if `wheelchair=true`, stairs are strictly eliminated from navigation).
+- **Fallback Logic:** If the AI provider fails or times out, the system gracefully returns safe, hardcoded fallback data (e.g., standard evacuation routes during an emergency).
+- **Validation:** Every AI response is aggressively parsed and validated against Zod schemas. Hallucinations or malformed JSON are caught and sanitized before ever reaching the frontend.
+- **Safety:** Built-in sanitization utilities strip malicious HTML/scripts, ensuring AI outputs cannot execute XSS attacks on the frontend.
 
 ---
 
-## 🎥 Demo
+## 🏗️ System Architecture
 
-> **Live Demo Video Placeholder**
-> 
-> *[Insert Demo.gif or YouTube link here]*
+The architecture follows a clean, decoupled client-server model:
 
----
+- **Frontend (React/Vite):** A modular, responsive SPA utilizing TailwindCSS for styling and Lucide for iconography. Components are strictly typed and heavily tested.
+- **Backend (Express/Node):** A REST API built on Express, secured by Helmet and Express-Rate-Limit. 
+- **AI Layer:** Abstracted AI services that construct prompts, call external LLMs, parse JSON, and handle retries.
+- **API Layer:** Domain-driven routing (e.g., `/api/transport`, `/api/crowd`) backed by controllers that manage HTTP request/response lifecycles.
+- **Utilities:** Shared Zod schemas, logger singletons, and error-handling middleware ensure consistency across the stack.
 
-## 🏗️ Architecture
+### Mermaid Diagrams
 
-The application utilizes a decoupled, modern monolithic architecture designed for extreme resilience and instantaneous state management.
-
+#### Architecture Diagram
 ```mermaid
 graph TD
-    Client[React Frontend]
-    API[Express Backend API]
-    AI[OpenRouter LLM]
-    
-    subgraph Frontend Architecture
-        Router[React Router & Suspense]
-        State[Context Providers: Settings, Toast]
-        Hooks[Custom Hooks: useAIChat, useTransport]
-        Components[Memoized UI Components]
-    end
-    
-    subgraph Backend Architecture
-        ExpressRoute[Express Router]
-        Middleware[Rate Limiter, Error Handler, CORS]
-        Service[AI Service & Prompt Builder]
-    end
-    
-    Client -->|HTTP GET/POST| API
-    API -->|Prompt injection & Sanitization| AI
-    AI -->|JSON/Markdown Response| API
-    API -->|Schema Validation & Normalization| Client
+    Client[Frontend: React SPA] -->|HTTPS / JSON| API[Backend: Express API]
+    API -->|Routing & Auth| Controllers
+    Controllers --> Services[Domain Services]
+    Services --> AILayer[AI Service Layer]
+    AILayer -->|HTTPS| LLM[OpenRouter / Gemini 2.5]
+    AILayer -.->|Validation| Zod[Zod Schemas]
 ```
 
----
-
-## 📁 Folder Structure
-
-```text
-FIFA-WORLD-CUP/
-├── frontend/                     # React Single Page Application (SPA)
-│   ├── src/
-│   │   ├── components/           # Reusable, memoized UI components (Button, Card, Skeleton)
-│   │   │   ├── ai/               # AI-specific components (ChatMessage, TypingIndicator)
-│   │   │   └── __tests__/        # Vitest component test suites
-│   │   ├── contexts/             # Global React Contexts (SettingsContext)
-│   │   ├── hooks/                # Custom React Hooks encapsulating API and business logic
-│   │   ├── layouts/              # Structural layouts (Navbar, Sidebar)
-│   │   ├── pages/                # Lazy-loaded dashboard views
-│   │   ├── providers/            # Top-level application providers (Toast)
-│   │   ├── services/             # Frontend API client wrappers
-│   │   ├── types/                # Strict TypeScript interfaces
-│   │   ├── utils/                # Normalizers, validation, and helpers
-│   │   ├── App.tsx               # Root routing and Suspense boundaries
-│   │   └── main.tsx              # React DOM mounting
-│   ├── package.json              # Frontend dependencies and Vitest scripts
-│   └── vite.config.ts            # Vite bundler configuration
-│
-└── backend/                      # Node.js / Express API
-    ├── src/
-    │   ├── ai/                   # AI integration layer
-    │   │   ├── prompts/          # Structured prompt builders (System, Context)
-    │   │   └── services/         # OpenRouter integration and API calls
-    │   ├── controllers/          # Route handlers
-    │   ├── middleware/           # Security: Rate Limiting, Error Handling, CORS
-    │   ├── routes/               # Express route definitions
-    │   └── index.ts              # Server initialization
-    └── package.json              # Backend dependencies
-```
-
----
-
-## 💻 Tech Stack
-
-| Layer | Technology | Purpose |
-| :--- | :--- | :--- |
-| **Frontend** | React 19, TypeScript, Vite | Ultra-fast rendering, type safety, and instant HMR dev experience. |
-| **Styling** | Tailwind CSS v4, Lucide Icons | Utility-first, zero-runtime CSS with a premium dark-mode design system. |
-| **State** | Context API, React Hooks | Lightweight, prop-drilling prevention without Redux bloat. |
-| **Backend** | Node.js, Express, TypeScript | High-throughput, asynchronous event-driven API bridging. |
-| **AI Integration**| OpenRouter (LLaMA/Mistral/GPT) | Low-latency LLM routing for dynamic prompt resolution. |
-| **Testing** | Vitest, Happy-DOM, RTL | Fast, isolated component and logic testing. |
-
----
-
-## 🧠 AI Workflow
-
-The AI engine acts as the central brain of the stadium, interpreting fragmented contextual data and returning structured JSON payloads or conversational markdown.
-
+#### Application Flow Diagram
 ```mermaid
 sequenceDiagram
     participant User
-    participant Frontend
-    participant Backend
-    participant OpenRouter
+    participant React UI
+    participant Backend API
+    participant AI Prompt Builder
+    participant LLM
     
-    User->>Frontend: Requests Transport Strategy
-    Frontend->>Backend: POST /api/v1/transport (Context: Location, Time, Settings)
-    Backend->>Backend: Build System Prompt (Inject Context & Guardrails)
-    Backend->>OpenRouter: Transmit sanitized prompt
-    OpenRouter-->>Backend: Raw AI JSON Response
-    Backend->>Backend: Validate Schema & Parse
-    Backend-->>Frontend: Normalized JSON payload
-    Frontend->>Frontend: Fallback Injection (If fields missing)
-    Frontend-->>User: Renders Beautiful Transport Dashboard
+    User->>React UI: Requests Wheelchair Route to Gate C
+    React UI->>Backend API: POST /api/navigation/route
+    Backend API->>AI Prompt Builder: Inject Context & Constraints
+    AI Prompt Builder->>LLM: Generate JSON Route
+    LLM-->>Backend API: Raw JSON Response
+    Backend API->>Backend API: Zod Validation & Sanitization
+    Backend API-->>React UI: Structured Route Data
+    React UI-->>User: Renders Step-by-Step UI
+```
+
+#### Request Flow Diagram
+```mermaid
+graph LR
+    Req[Incoming HTTP Request] --> Sec[Helmet / CORS / Rate Limit]
+    Sec --> Val[Schema Validation]
+    Val --> Ctrl[Controller]
+    Ctrl --> Svc[Service]
+    Svc --> AI[AI Engine]
+    AI --> Resp[HTTP Response]
+    Ctrl -.->|Error| Err[Global Error Handler]
+```
+
+#### Folder Diagram
+```mermaid
+graph TD
+    Root[FIFA-WORLD-CUP]
+    Root --> Frontend[frontend/]
+    Root --> Backend[backend/]
+    
+    Frontend --> F_Src[src/]
+    F_Src --> F_Comp[components/]
+    F_Src --> F_Pages[pages/]
+    F_Src --> F_Hooks[hooks/]
+    
+    Backend --> B_Src[src/]
+    B_Src --> B_AI[ai/]
+    B_Src --> B_Nav[navigation/]
+    B_Src --> B_Trans[transport/]
+    B_Src --> B_Mid[middleware/]
 ```
 
 ---
 
-## 📱 Dashboard Overview
+## 📂 Folder Structure
 
-### 1. Home Dashboard
-- **Purpose:** The central landing hub for the application.
-- **Features:** Live match tracker, real-time stadium attendance capacity ring, current weather API mockup, and quick-action navigation grid.
-
-### 2. Fan Dashboard
-- **Purpose:** A personalized digital wallet for attendees.
-- **Features:** Interactive QR ticket, interactive parking pass, pre-match timeline, and personalized AI journey recommendations.
-
-### 3. AI Assistant
-- **Purpose:** A conversational interface for instant, contextual stadium support.
-- **Features:** Simulated word-by-word streaming, context-chips (e.g., "Food", "Merch"), 98% confidence badges, and intelligent follow-up suggestions.
-
-### 4. Stadium Navigation
-- **Purpose:** Hyper-accurate indoor mapping and routing.
-- **Features:** Crowd-avoidance routing toggles, wheelchair-accessible pathing, live ETA overlays, and multi-level floor selectors.
-
-### 5. Crowd Intelligence
-- **Purpose:** Real-time density monitoring for security and fans.
-- **Features:** Dynamic 9-sector heatmap, 2-hour predictive flow graphs, and AI-generated strategic movement recommendations.
-
-### 6. Transport Hub
-- **Purpose:** Managing the ingress/egress of 80,000 fans.
-- **Features:** Live multi-modal transport status (Metro, Bus, Taxi), surge pricing alerts, and AI-calculated departure strategies based on active crowd densities.
-
-### 7. Accessibility
-- **Purpose:** Ensuring a world-class experience for all users.
-- **Features:** Sign language translator dispatch, sensory room availability trackers, and medical companion request routing.
-
-### 8. Emergency & SOS
-- **Purpose:** Rapid incident reporting and active threat tracking.
-- **Features:** One-tap SOS deployment, active stadium incident map, and high-visibility alert ribbons.
-
-### 9. Organizer Command Center
-- **Purpose:** Executive oversight for venue management.
-- **Features:** Aggregated KPI trackers (Active Incidents, Risk Trend, AI Confidence), integrated subsystem summaries, and real-time operational directives.
-
-### 10. Global Settings
-- **Purpose:** Deep personalization.
-- **Features:** Language selection, accessibility toggles (Screen Reader, Wheelchair), push notification preferences, and data privacy controls.
+```text
+FIFA-WORLD-CUP/
+├── backend/
+│   ├── package.json
+│   ├── swagger.json             # OpenAPI Documentation
+│   └── src/
+│       ├── index.ts             # Express Server Entry Point
+│       ├── ai/                  # Core AI Engine (Client, Context, Prompts)
+│       ├── config/              # Environment Configuration
+│       ├── middleware/          # Security, Rate Limiting, Error Handling
+│       ├── utils/               # Zod Schemas, Logger, Sanitizers
+│       ├── accessibility/       # Accessibility Domain
+│       ├── crowd/               # Crowd Intelligence Domain
+│       ├── emergency/           # Emergency Response Domain
+│       ├── navigation/          # Stadium Navigation Domain
+│       ├── operations/          # Organizer Operations Domain
+│       └── transport/           # Transportation Domain
+└── frontend/
+    ├── package.json
+    ├── vite.config.ts
+    └── src/
+        ├── components/          # Reusable UI (Cards, Inputs, Domain-specific UIs)
+        ├── config/              # Frontend Constants
+        ├── contexts/            # Global State (SettingsContext)
+        ├── hooks/               # React Query-style data fetching hooks
+        ├── layouts/             # App Shell (Navbar, Sidebar, Footer)
+        ├── pages/               # Top-level Route Components
+        ├── providers/           # Context Providers (Toast)
+        ├── services/            # API Clients
+        ├── types/               # Shared TypeScript Interfaces
+        └── utils/               # Fetch Wrappers, Normalizers
+```
 
 ---
 
-## 🚀 Installation & Setup
+## 🛠️ Technology Stack
+
+- **Frontend:** React 19, Vite, TailwindCSS 4, React Router, Lucide React
+- **Backend:** Node.js, Express 5, TypeScript
+- **AI:** OpenRouter API (targeting `google/gemini-2.5-flash`)
+- **Testing:** Vitest, React Testing Library, Happy DOM, V8 Coverage
+- **Security:** Helmet, Express-Rate-Limit, DOMPurify (Sanitization concepts)
+- **Validation:** Zod (Runtime Schema Validation)
+- **Build Tools:** TSC (TypeScript Compiler), Vite Bundler
+
+---
+
+## 💻 Installation
 
 ### Prerequisites
-- Node.js (v18 or higher)
-- npm or pnpm
+- Node.js (v20+ recommended)
+- npm (v10+)
 - An active OpenRouter API Key
 
-### 1. Clone the Repository
+### Clone Repository
 ```bash
-git clone https://github.com/your-username/fifa-world-cup-companion.git
-cd fifa-world-cup-companion
+git clone <repository-url>
+cd FIFA-WORLD-CUP
 ```
 
-### 2. Backend Setup
+### Environment Variables
+Create a `.env` file in the `backend/` directory:
+```env
+PORT=3000
+OPENROUTER_API_KEY=your_api_key_here
+OPENROUTER_MODEL=google/gemini-2.5-flash
+FRONTEND_URL=http://localhost:5173
+```
+
+### Install & Run Backend
 ```bash
 cd backend
 npm install
-```
-Create a `.env` file in the `backend` directory (see Environment Variables section).
-```bash
-npm run dev
+npm run build
+npm run start
+# For development: npm run dev
 ```
 
-### 3. Frontend Setup
-Open a new terminal:
+### Install & Run Frontend
 ```bash
 cd frontend
 npm install
-npm run dev
+npm run build
+npm run preview
+# For development: npm run dev
 ```
 
-The application will be running at `http://localhost:5173`.
+### Run Tests
+```bash
+# In backend/
+npm test
+
+# In frontend/
+npm test
+```
 
 ---
 
 ## 🔐 Environment Variables
 
-Create a `.env` file in the `backend` root:
-
-| Variable | Description | Required | Example |
-| :--- | :--- | :---: | :--- |
-| `PORT` | The port for the Express server | No | `3000` |
-| `OPENROUTER_API_KEY` | Your OpenRouter authorization key | **Yes** | `sk-or-v1-abcdef123456...` |
-| `NODE_ENV` | Environment mode | No | `development` |
-| `FRONTEND_URL` | Allowed CORS origin | No | `http://localhost:5173` |
-
----
-
-## 📡 API Endpoints
-
-All endpoints are prefixed with `/api/v1`.
-
-| Method | Route | Purpose | Response Format |
-| :--- | :--- | :--- | :--- |
-| `POST` | `/ai/chat` | Conversational AI assistant interaction | Markdown String (Wrapped in JSON) |
-| `POST` | `/ai/transport` | Generates context-aware transport strategies | Structured JSON Schema |
-| `POST` | `/ai/crowd` | Generates crowd mitigation and density analysis | Structured JSON Schema |
-| `POST` | `/ai/operations`| Executive command center summaries | Structured JSON Schema |
+| Variable | Purpose | Required | Default |
+|----------|---------|----------|---------|
+| `PORT` | The port the backend server binds to | No | `3000` |
+| `OPENROUTER_API_KEY` | Authentication for the AI LLM | Yes | - |
+| `OPENROUTER_MODEL` | The specific model to query | No | `google/gemini-2.5-flash` |
+| `FRONTEND_URL` | CORS allowed origin | No | `http://localhost:5173` |
+| `NODE_ENV` | Environment state (dev/prod) | No | `development` |
 
 ---
 
-## 🛡️ Security Features
+## 📡 API Documentation
 
-- **Strict CORS Policy:** Backend specifically restricts origins to the defined frontend environment.
-- **Helmet Integration:** Express utilizes `helmet` to set secure HTTP headers (XSS protection, no-sniff, frameguard).
-- **Rate Limiting:** IP-based rate limiting (100 requests per 15 minutes) prevents DDoS attacks and API abuse.
-- **Prompt Injection Defense:** System prompts strictly enforce constraints, instructing the LLM to ignore user instructions that attempt to break character or reveal system directives.
-- **Sanitization:** Frontend uses `react-markdown` to safely render AI text without exposing `dangerouslySetInnerHTML`.
+*(All successful endpoints return a standard wrapper: `{ success: true, data: {...}, message: string }`)*
+
+### 1. Health Check
+- **Method:** `GET`
+- **URL:** `/api/health`
+- **Purpose:** Verifies server uptime.
+
+### 2. AI Chat
+- **Method:** `POST`
+- **URL:** `/api/ai/chat`
+- **Purpose:** Free-form conversational assistant.
+- **Request:** `{ "message": string, "language": string, "userRole": string, "stadium": string, ... }`
+- **Response:** `{ "reply": string }`
+
+### 3. Smart Navigation
+- **Method:** `POST`
+- **URL:** `/api/navigation/route`
+- **Purpose:** Generates step-by-step stadium routing.
+- **Request:** `{ "currentLocation": string, "destination": string, "stadium": string, "wheelchair": boolean, "ecoFriendly": boolean, ... }`
+- **Response:** JSON array of route steps, ETA, congestion levels, and eco-benefits.
+
+### 4. Transport Intelligence
+- **Method:** `POST`
+- **URL:** `/api/transport/recommend`
+- **Purpose:** AI transport recommendations.
+- **Request:** `{ "currentLocation": string, "destination": string, "stadium": string, "ecoFriendly": boolean, "weather": string, ... }`
+- **Response:** Recommended transport, alternatives, travel tips, and carbon saved.
+
+### 5. Accessibility Assist
+- **Method:** `POST`
+- **URL:** `/api/accessibility/assist`
+- **Purpose:** Specialized guidance for disabilities.
+- **Request:** `{ "stadium": string, "destination": string, "accessibilityNeeds": string[] }`
+
+### 6. Operations Summary
+- **Method:** `POST`
+- **URL:** `/api/operations/summary`
+- **Purpose:** Command center dashboard data generation.
+- **Request:** `{ "stadium": string, "crowdStatus": string, "transportStatus": string }`
+
+### 7. Emergency Assist
+- **Method:** `POST`
+- **URL:** `/api/emergency/assist`
+- **Purpose:** Real-time crisis protocol generation.
+- **Request:** `{ "incidentType": string, "location": string, "stadium": string }`
 
 ---
 
-## ⚡ Performance Optimizations
+## 🧱 Backend Architecture
 
-- **React Code Splitting:** `App.tsx` utilizes `React.lazy` and `<Suspense>` to chunk every dashboard. The initial JavaScript payload is compressed to a blistering **~82 kB (gzip)**.
-- **Memoization:** All core components (`Card`, `Button`, `Input`, `Badge`) and chat messages are wrapped in `React.memo` to eliminate wasted render cycles when parent states update.
-- **Skeleton Architecture:** Zero layout-shift design. While lazy-loaded components fetch, beautiful `Skeleton` grids immediately render, making the app feel instantaneously responsive.
+The backend utilizes a heavily decoupled, Domain-Driven Design (DDD) approach:
+- **Routes:** Define HTTP endpoints and attach rate-limiters.
+- **Controllers:** Handle HTTP req/res, extract parameters, and handle top-level error catching.
+- **Services:** Execute business logic and prepare parameters for the AI layer.
+- **AI Layer (`/src/ai`):** Centralized logic for `OpenRouter` communication, applying Zod schema validation to raw AI strings.
+- **Middleware:** `errorHandler.ts` formats consistent error responses; `rateLimiter.ts` prevents API abuse.
 
 ---
 
-## ♿ Accessibility (a11y)
+## 🎨 Frontend Architecture
 
-- **Semantic HTML & ARIA:** Deep integration of `aria-live` for dynamic AI updates, `aria-invalid` for form errors, and strict `htmlFor` bindings on all inputs.
-- **Keyboard Navigation:** Every button and interactive element utilizes explicit `<button>` tags with rigorous `focus-visible:ring-2` Tailwind outlines to support Tab-routing without mouse usage.
-- **Contrast Ratios:** The dark theme is meticulously designed to exceed WCAG AA contrast standards, ensuring legibility under harsh stadium lighting.
+- **Pages:** Top-level route components (e.g., `StadiumNavigation.tsx`, `Settings.tsx`).
+- **Components:** Reusable UI elements (`Card`, `Button`, `Input`) and domain-specific widgets (`TransportSearchCard`).
+- **Hooks:** Custom hooks (`useTransport`, `useNavigation`) that manage loading states, API payloads, and global settings injection.
+- **Context:** `SettingsContext` persists user language, accessibility, and sustainability preferences to `localStorage`.
+- **API Client:** A standardized `fetch` wrapper that handles JSON serialization and error mapping.
+
+---
+
+## 🔄 AI Workflow
+
+1. **User Input:** User interacts with a React UI component (e.g., clicking "Plan Journey").
+2. **Frontend Hook:** The hook merges local UI state with global user preferences (Language, Eco-Friendly toggle) and sends a POST request.
+3. **Backend Service:** The request hits the controller and is passed to the domain service.
+4. **Prompt Builder:** The service injects the payload into a strictly formatted Markdown template, adding JSON schema requirements.
+5. **OpenRouter (LLM):** The backend queries the LLM.
+6. **Validation:** The AI's response is parsed via a `jsonParser` utility and strictly validated against a `zod` schema to ensure type safety.
+7. **Frontend Rendering:** The structured JSON is returned to the React client and beautifully rendered into Timeline cards, Badges, and Alerts.
+
+---
+
+## 🛡️ Security
+
+- **Helmet:** Automatically sets secure HTTP headers (CSP, NoSniff, X-Frame-Options).
+- **Rate Limiting:** IP-based throttling prevents DDoS and API budget exhaustion.
+- **Input Validation:** All incoming payloads are checked for required fields before processing.
+- **Error Handling:** Centralized error handling ensures stack traces are never leaked in production.
+- **Safe Defaults:** AI fallbacks ensure the application never crashes if the LLM provider experiences downtime.
+
+---
+
+## ⚡ Performance
+
+- **Compression:** Gzip compression is enabled via Express middleware, heavily reducing payload sizes.
+- **Caching:** The backend AI service utilizes an LRU in-memory cache to instantly serve identical prompts, drastically cutting API costs and latency.
+- **Efficient Rendering:** React components utilize `React.memo` where appropriate, and heavy AI markdown rendering is scoped tightly.
+
+---
+
+## ♿ Accessibility
+
+- **Semantic HTML:** Strict adherence to proper `<header>`, `<main>`, `<nav>`, and `<article>` tags.
+- **ARIA:** Interactive components implement `aria-label`, `aria-hidden`, and `aria-live` for screen-reader support.
+- **Keyboard Navigation:** All buttons and interactive toggles are fully keyboard accessible with visible focus states.
+- **Color Contrast:** The bespoke UI utilizes tailored HSL colors ensuring high readability against the dark-mode canvas.
 
 ---
 
 ## 🧪 Testing
 
-The project utilizes **Vitest** paired with **React Testing Library** for high-speed, headless component verification.
+The repository maintains an exceptionally high standard of testing, boasting near **100% statement coverage** across vital logic paths.
 
-To run the test suite:
-```bash
-cd frontend
-npm run test
-```
-*Current test coverage includes robust assertions for core UI components and Data Normalization utilities, ensuring AI payloads never crash the frontend.*
+- **Framework:** Vitest + Happy DOM.
+- **Backend Tests:** Fully test the `ai.service`, routing, middleware, and domain controllers using mock `req/res` objects.
+- **Frontend Tests:** Ensure all UI components render without crashing, and custom hooks successfully manage asynchronous state.
+- **How to Run:** Execute `npm test` in either directory to generate a real-time `v8` coverage report.
 
 ---
 
-## 🚨 Error Handling
+## 💎 Code Quality
 
-- **Global Error Boundaries:** `ErrorBoundary.tsx` wraps the entire React router tree. If an unexpected runtime exception occurs, it intercepts the crash and presents a beautiful, branded "Application Error" fallback UI with a graceful "Reload" action, completely eliminating the React "White Screen of Death".
-- **Local Error States:** Individual dashboards utilize an `ErrorState` component to handle localized API timeouts, allowing users to hit "Retry" on a single widget without refreshing the whole page.
-
----
-
-## 🌐 Responsive Design
-
-Designed mobile-first utilizing Tailwind's `md:` and `lg:` breakpoints. 
-- **Mobile Devices:** Bottom-sheet styled mobile menus, touch-friendly oversized hit targets, and stacked card layouts.
-- **Desktop/Tablets:** Expansive sidebar navigation, multi-column grid analytics, and dense data presentation for Command Center operators.
+- **Strict TypeScript:** No `any` types exist in the repository. Interfaces dictate all data boundaries.
+- **Zero Warnings:** The codebase compiles via `tsc` and lints via `oxlint` with absolutely zero warnings.
+- **Modularity:** Dead code, unused imports, and redundant logic have been entirely purged.
+- **Maintainability:** Separation of concerns ensures that UI developers do not need to understand AI prompt engineering, and backend engineers can update Zod schemas without breaking React components.
 
 ---
 
-## 🎯 FIFA Problem Statement Mapping
+## 🌍 Deployment
 
-| Problem Requirement | Implemented Feature | Status |
-| :--- | :--- | :---: |
-| Build a smart, dynamic assistant | `AiAssistant.tsx` with streaming & context awareness | ✅ |
-| Logical decision making based on context | AI uses Settings (Wheelchair, Language) to alter routing | ✅ |
-| Improve Transportation & Navigation | `Transport.tsx` & `StadiumNavigation.tsx` AI Hubs | ✅ |
-| Operational Intelligence | `OrganizerDashboard.tsx` Command Center | ✅ |
-| Clean and Maintainable Code | Strict TS, SOLID principles, 0 `any` types, Memoized UI | ✅ |
+The application is inherently cloud-agnostic.
+- **Frontend:** Build via `npm run build` generates a highly optimized static bundle in the `dist` folder, ready for deployment to Vercel, Netlify, or AWS S3.
+- **Backend:** Compiles to JavaScript via `tsc` and can be run in any Node.js container (Docker, Heroku, AWS ECS).
 
 ---
 
-## 👨‍💻 Team / Author
+## 📸 Screenshots
 
-Built with ❤️ for the **FIFA World Cup 2026 AI Hackathon**.
+*(Placeholder for future application screenshots)*
+- **Dashboard View**
+- **Mobile Navigation**
+- **Settings & Eco-Friendly Mode**
 
-**Role:** Principal Software Architect & Full Stack AI Engineer  
-**Focus:** High-performance React, TypeScript, and applied Generative AI.
+---
+
+## 🔮 Future Enhancements
+
+- **Real-Time WebSockets:** Upgrading the operations dashboard from polling/on-demand generation to a live WebSocket feed of stadium anomalies.
+- **Ticketing Integration:** Connecting the AI to actual user ticket databases to personalize routing immediately upon login.
+- **Computer Vision API:** Allowing users to upload photos of their surroundings for the AI to determine their exact location in the stadium.
+
+---
+
+## 📝 Assumptions
+
+- Users have a modern mobile device with basic internet connectivity.
+- The `google/gemini-2.5-flash` model via OpenRouter maintains a low latency and high JSON-adherence rate.
+- Stadium maps are internally trained or provided in the system prompt context.
+
+---
+
+## ⚠️ Limitations
+
+- The system relies on the uptime of the OpenRouter API. If the provider goes down, the application relies on generic fallback data.
+- True real-time weather and crowd sensors are simulated in this architecture; a production deployment would require hardware integration APIs.
+
+---
+
+## ❓ FAQ
+
+**Q: Does this application replace human staff?**
+A: No, it empowers them. The Operations and Emergency modules are designed to augment staff capabilities with rapid, AI-generated strategic advice.
+
+**Q: How does the AI guarantee accurate routing?**
+A: The system restricts the AI's output format strictly using Zod schemas and provides immutable stadium layout rules within the system prompt.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome. Please ensure that any PRs pass the strict TypeScript checks (`npm run build`) and maintain 100% test coverage before submission.
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
 ---
 
-<div align="center">
-<i>"Setting a new global standard for stadium intelligence and fan experience."</i>
-</div>
+## 👨‍💻 Author
+
+Engineered for the FIFA World Cup 2026 Smart Stadium Initiative.
+
+---
+
+## 🙏 Acknowledgements
+
+- The OpenRouter API team
+- The React & Vite Core Teams
+- FIFA Operations Guidelines

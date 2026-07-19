@@ -1,7 +1,6 @@
 import type { AccessibilityRequest, AccessibilityResponse } from '../types/accessibility';
 import { apiClient } from '../utils/apiClient';
-
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+import { API_BASE_URL } from '../config/api.config';
 
 export class AccessibilityService {
   public static async assist(request: AccessibilityRequest): Promise<AccessibilityResponse> {

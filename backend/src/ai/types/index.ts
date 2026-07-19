@@ -8,7 +8,7 @@ export interface SessionMetadata {
   startedAt: string;
   lastActive: string;
   userAgent?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export interface AiContext {
@@ -22,14 +22,4 @@ export interface AiContext {
   metadata: SessionMetadata;
 }
 
-export interface PromptTemplate {
-  systemPrompt: string;
-  contextData: Partial<AiContext>;
-  userMessage: string;
-}
 
-export interface StructuredSchema {
-  type: string;
-  properties: Record<string, any>;
-  required?: string[];
-}

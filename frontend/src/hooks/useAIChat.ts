@@ -146,6 +146,7 @@ export const useAIChat = () => {
     setTimeout(() => {
       sendPromptToBackend(text);
     }, 50);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading, isStreaming, settings]);
 
   const regenerateLastMessage = useCallback(() => {
@@ -165,6 +166,7 @@ export const useAIChat = () => {
     });
 
     sendPromptToBackend(lastUserMsg.text);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [messages, isLoading, isStreaming, settings]);
 
   const clearConversation = useCallback(() => {

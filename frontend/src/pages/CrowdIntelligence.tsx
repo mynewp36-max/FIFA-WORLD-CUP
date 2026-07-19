@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { CrowdService } from '../services/crowd.service';
+import type { CrowdAnalysisResponse } from '../services/crowd.service';
 import { Card } from '../components/Card';
 import { useToast } from '../providers/ToastProvider';
 import { Users, TrendingUp, AlertTriangle, ShieldCheck, Clock, Map, Activity, Zap, BarChart3, ChevronRight } from 'lucide-react';
@@ -8,6 +10,35 @@ import { Badge } from '../components/Badge';
 export const CrowdIntelligence: React.FC = () => {
   const { showToast } = useToast();
   const [activeSector, setActiveSector] = useState('North Plaza');
+  const [analysis, setAnalysis] = useState<CrowdAnalysisResponse | null>(null);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+
+  useEffect(() => {
+    let isMounted = true;
+    const fetchAnalysis = async () => {
+      setIsAnalyzing(true);
+      const densityMap: Record<string, string> = {
+        'Gate A': 'High',
+        'North Plaza': 'Medium',
+        'East Concourse': 'Low'
+      };
+      
+      const result = await CrowdService.analyze({ 
+        activeSector, 
+        density: densityMap[activeSector] || 'Medium' 
+      });
+      
+      if (isMounted && result) {
+        setAnalysis(result);
+      }
+      if (isMounted) {
+        setIsAnalyzing(false);
+      }
+    };
+    
+    fetchAnalysis();
+    return () => { isMounted = false; };
+  }, [activeSector]);
 
   return (
     <div className="space-y-6 max-w-6xl mx-auto animate-in fade-in duration-500">
@@ -181,22 +212,24 @@ export const CrowdIntelligence: React.FC = () => {
               <Zap size={20} className="text-brand-primary animate-pulse" />
               <h3 className="font-bold text-white">AI Strategy</h3>
             </div>
-            {activeSector === 'Gate A' ? (
+            {isAnalyzing ? (
+              <div className="flex flex-col gap-2 mb-4">
+                <div className="h-4 bg-white/10 animate-pulse rounded w-full"></div>
+                <div className="h-4 bg-white/10 animate-pulse rounded w-5/6"></div>
+                <div className="h-4 bg-white/10 animate-pulse rounded w-4/6"></div>
+              </div>
+            ) : analysis ? (
               <p className="text-sm text-gray-300 leading-relaxed mb-4">
-                Gate A is currently exceeding safety thresholds. <strong className="text-error">Divert incoming pedestrian traffic</strong> to Gate B and C. Deploy rapid response crowd management team to sector A2 to prevent bottlenecking at the turnstiles.
-              </p>
-            ) : activeSector === 'North Plaza' ? (
-              <p className="text-sm text-gray-300 leading-relaxed mb-4">
-                Crowd is building up steadily. Consider opening overflow concession stands in the East Concourse to distribute density naturally before the 17:30 peak.
+                {analysis.strategy}
               </p>
             ) : (
               <p className="text-sm text-gray-300 leading-relaxed mb-4">
-                Sector is currently clear and operating below 40% capacity. Ideal candidate for routing diverted traffic from congested zones.
+                Unable to load AI recommendations at this time. Please check your connection.
               </p>
             )}
             
             <div className="space-y-2">
-              <Button onClick={() => showToast('Action Dispatched')} size="sm" className="w-full bg-brand-primary text-white border-none">
+              <Button onClick={() => showToast(analysis?.recommendedAction ? `Action Dispatched: ${analysis.recommendedAction}` : 'Action Dispatched')} size="sm" className="w-full bg-brand-primary text-white border-none" disabled={isAnalyzing}>
                 Execute AI Recommendation
               </Button>
               {activeSector === 'Gate A' && (

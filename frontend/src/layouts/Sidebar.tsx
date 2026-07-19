@@ -46,11 +46,11 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           <h1 className="text-2xl font-bold bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">
             FIFA 2026 OS
           </h1>
-          <button className="md:hidden text-text-muted hover:text-text-main" onClick={onClose}>
+          <button aria-label="Close Sidebar" className="md:hidden text-text-muted hover:text-text-main" onClick={onClose}>
             <X size={24} />
           </button>
         </div>
-        <nav className="flex-1 px-4 space-y-2 overflow-y-auto">
+        <nav aria-label="Main Navigation" className="flex-1 px-4 space-y-2 overflow-y-auto">
           {navItems.map((item) => (
             <NavLink
               key={item.path}

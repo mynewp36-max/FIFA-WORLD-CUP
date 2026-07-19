@@ -3,7 +3,10 @@ import type {  TransportRequest, TransportResponse, UserRole  } from '../types/t
 import { TransportService } from '../services/transport.service';
 import { normalizeTransportResponse } from '../utils/normalizers';
 
+import { useSettings } from './useSettings';
+
 export const useTransport = () => {
+  const { settings } = useSettings();
   const [currentLocation, setCurrentLocation] = useState('');
   const [destination, setDestination] = useState('');
   const [userRole, setUserRole] = useState<UserRole>('Fan');
@@ -28,11 +31,13 @@ export const useTransport = () => {
         match: 'World Cup Final',
         currentLocation,
         destination,
-        language: 'English',
+        language: settings.language?.preferred || 'English',
         userRole,
         wheelchair,
         avoidCrowd,
         groupSize,
+        ecoFriendly: settings.sustainability?.ecoFriendly ?? true,
+        weather: 'Clear'
       };
 
       const response = await TransportService.recommend(request);

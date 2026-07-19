@@ -6,7 +6,7 @@ export type ValidationType = 'string' | 'number' | 'boolean' | 'array';
 export interface ValidationRule {
   required?: boolean;
   type?: ValidationType;
-  enum?: any[];
+  enum?: unknown[];
   minLength?: number;
   maxLength?: number;
 }

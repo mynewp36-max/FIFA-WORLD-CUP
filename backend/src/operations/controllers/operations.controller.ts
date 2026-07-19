@@ -35,7 +35,7 @@ export class OperationsController {
       aiLogger.info(`Operations summary generated in ${responseTime}ms`);
 
       res.status(200).json(sendResponse(req, true, result, 'Operations summary generated successfully.'));
-    } catch (error: any) {
+    } catch (error: unknown) {
       next(error);
     }
   }
