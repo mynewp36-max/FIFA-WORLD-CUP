@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { AiService } from '../../ai/services/ai.service';
-import { buildCrowdPrompt } from '../prompts/templates';
+import { CrowdService } from '../services/crowd.service';
 import { sendResponse } from '../../utils/response';
 import { aiLogger } from '../../ai/utils/logger';
 
@@ -9,24 +8,9 @@ export class CrowdController {
     const startTime = Date.now();
     try {
       const { activeSector = 'North Plaza', density = 'High' } = req.body;
+      const userId = req.ip || 'anonymous-user';
       
-      const prompt = buildCrowdPrompt(activeSector, density);
-
-      const schema = {
-        type: 'object',
-        properties: {
-          strategy: { type: 'string' },
-          riskLevel: { type: 'string' },
-          recommendedAction: { type: 'string' }
-        },
-        required: ['strategy', 'riskLevel', 'recommendedAction']
-      };
-
-      const result = await AiService.generateStructuredResponse(
-        req.ip || 'anonymous-user',
-        prompt,
-        schema
-      );
+      const result = await CrowdService.analyzeSector(activeSector, density, userId);
 
       const responseTime = Date.now() - startTime;
       aiLogger.info(`Crowd analysis generated in ${responseTime}ms`);

@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
-import { AiService } from '../ai/services/ai.service';
-import { contextManager } from '../ai/context/context.manager';
-import { aiLogger } from '../ai/utils/logger';
-import { sendResponse } from '../utils/response';
+import { AiService } from '../services/ai.service';
+import { contextManager } from '../context/context.manager';
+import { aiLogger } from '../utils/logger';
+import { sendResponse } from '../../utils/response';
 
 /**
  * Handles the POST /api/ai/chat route.

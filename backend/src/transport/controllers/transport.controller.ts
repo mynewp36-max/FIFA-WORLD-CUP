@@ -11,17 +11,6 @@ export class TransportController {
     try {
       const data: TransportRequest = req.body;
 
-      // Validation
-      if (!data.stadium || !data.currentLocation || !data.destination) {
-        res.status(400).json(sendResponse(req, false, null, "'stadium', 'currentLocation', and 'destination' are required."));
-        return;
-      }
-
-      if (data.groupSize !== undefined && (typeof data.groupSize !== 'number' || data.groupSize < 1)) {
-        res.status(400).json(sendResponse(req, false, null, "'groupSize' must be a positive number."));
-        return;
-      }
-
       // Defaults
       data.groupSize = data.groupSize ?? 1;
       data.wheelchair = data.wheelchair ?? false;

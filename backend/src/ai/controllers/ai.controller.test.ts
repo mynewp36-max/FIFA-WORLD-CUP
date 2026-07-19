@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { AiController } from './ai.controller';
-import { AiService } from '../ai/services/ai.service';
-import { contextManager } from '../ai/context/context.manager';
+import { AiService } from '../services/ai.service';
+import { contextManager } from '../context/context.manager';
 import { Request, Response, NextFunction } from 'express';
 
 const mockReq = (body: unknown = {}): Partial<Request> => ({

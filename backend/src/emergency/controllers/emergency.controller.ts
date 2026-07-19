@@ -16,16 +16,6 @@ export class EmergencyController {
     try {
       const data: EmergencyRequest = req.body;
 
-      // Validation
-      if (!data.incidentType || !VALID_INCIDENT_TYPES.includes(data.incidentType)) {
-        res.status(400).json(sendResponse(req, false, null, `'incidentType' must be one of: ${VALID_INCIDENT_TYPES.join(', ')}.`));
-        return;
-      }
-      if (!data.stadium || !data.location) {
-        res.status(400).json(sendResponse(req, false, null, "'stadium' and 'location' are required."));
-        return;
-      }
-
       // Defaults
       data.language = data.language ?? 'English';
       data.userRole = data.userRole ?? 'Fan';

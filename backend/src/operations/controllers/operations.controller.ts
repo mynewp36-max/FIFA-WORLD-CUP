@@ -11,16 +11,6 @@ export class OperationsController {
     try {
       const data: OperationsSummaryRequest = req.body;
 
-      // Validation
-      if (!data.stadium) {
-        res.status(400).json(sendResponse(req, false, null, "'stadium' is required."));
-        return;
-      }
-      if (!data.crowdStatus || !data.transportStatus) {
-        res.status(400).json(sendResponse(req, false, null, "'crowdStatus' and 'transportStatus' are required."));
-        return;
-      }
-
       // Defaults
       data.language = data.language ?? 'English';
       data.userRole = data.userRole ?? 'Organizer';

@@ -11,15 +11,7 @@ export class AccessibilityController {
     try {
       const data: AccessibilityRequest = req.body;
 
-      // Validation
-      if (!data.stadium || !data.destination) {
-        res.status(400).json(sendResponse(req, false, null, "'stadium' and 'destination' are required."));
-        return;
-      }
-      if (!Array.isArray(data.accessibilityNeeds) || data.accessibilityNeeds.length === 0) {
-        res.status(400).json(sendResponse(req, false, null, "'accessibilityNeeds' must be a non-empty array."));
-        return;
-      }
+
 
       const userId = req.ip || 'anonymous-accessibility-user';
       aiLogger.info(`Accessibility request for needs: ${data.accessibilityNeeds.join(', ')} → ${data.destination}`);

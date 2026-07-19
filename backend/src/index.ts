@@ -19,7 +19,7 @@ import { errorHandler, notFoundHandler } from './middleware/errorHandler';
 import { aiRateLimiter } from './middleware/rateLimiter';
 import { sendResponse } from './utils/response';
 
-import aiRoutes from './routes/ai.routes';
+import aiRoutes from './ai/routes/ai.routes';
 import navigationRoutes from './navigation/routes/navigation.routes';
 import accessibilityRoutes from './accessibility/routes/accessibility.routes';
 import transportRoutes from './transport/routes/transport.routes';

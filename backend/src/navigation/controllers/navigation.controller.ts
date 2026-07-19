@@ -10,10 +10,7 @@ export class NavigationController {
     try {
       const data: NavigationRequest = req.body;
       
-      if (!data.currentLocation || !data.destination || !data.stadium) {
-        res.status(400).json(sendResponse(req, false, null, 'currentLocation, destination, and stadium are required.'));
-        return;
-      }
+
       
       const userId = req.ip || 'anonymous-navigator';
       aiLogger.info(`Navigation request from ${data.currentLocation} to ${data.destination}`);

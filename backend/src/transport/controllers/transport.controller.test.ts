@@ -70,39 +70,7 @@ describe('TransportController', () => {
     expect(next).not.toHaveBeenCalled();
   });
 
-  it('recommend returns 400 when stadium, currentLocation or destination is missing', async () => {
-    const req = mockReq({
-      stadium: 'MetLife Stadium',
-      // currentLocation missing
-      destination: 'Hotel',
-    });
-    const res = mockRes();
 
-    await TransportController.recommend(req as Request, res as Response, next);
-
-    expect(res.status).toHaveBeenCalledWith(400);
-    const jsonCall = (res.json as ReturnType<typeof vi.fn>).mock.calls[0][0];
-    expect(jsonCall.success).toBe(false);
-    expect(jsonCall.message).toContain('required');
-    expect(TransportService.recommend).not.toHaveBeenCalled();
-  });
-
-  it('recommend returns 400 when groupSize is invalid (less than 1)', async () => {
-    const req = mockReq({
-      stadium: 'MetLife Stadium',
-      currentLocation: 'Gate 1',
-      destination: 'Station',
-      groupSize: 0,
-    });
-    const res = mockRes();
-
-    await TransportController.recommend(req as Request, res as Response, next);
-
-    expect(res.status).toHaveBeenCalledWith(400);
-    const jsonCall = (res.json as ReturnType<typeof vi.fn>).mock.calls[0][0];
-    expect(jsonCall.success).toBe(false);
-    expect(jsonCall.message).toContain('positive number');
-  });
 
   it('recommend forwards errors to next() on service error', async () => {
     const req = mockReq({
