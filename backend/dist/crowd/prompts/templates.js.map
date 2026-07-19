@@ -1,1 +1,0 @@
-{"version":3,"file":"templates.js","sourceRoot":"","sources":["../../../src/crowd/prompts/templates.ts"],"names":[],"mappings":";;;AAEA,MAAM,mBAAmB,GAAG;;;;;;;;EAQ1B,CAAC;AAEI,MAAM,gBAAgB,GAAG,CAAC,YAAoB,EAAE,OAAe,EAAU,EAAE;IAChF,OAAO,GAAG,mBAAmB,gCAAgC,YAAY,sBAAsB,OAAO,EAAE,CAAC;AAC3G,CAAC,CAAC;AAFW,QAAA,gBAAgB,oBAE3B"}
